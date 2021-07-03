@@ -1,13 +1,13 @@
 ## тема проекта:
-Приложение виĸторина (тема вопросов общая или будет уточняться).
-Простой клон https://play.google.com/store/apps/details?id=smartowlapps.com.quiz360.
-Доска с задачами https://trello.com/b/0s0gOI21/simpletriviaclone.
+Приложение виĸторина (тема вопросов общая или будет уточняться). 
+Простой клон https://play.google.com/store/apps/details?id=smartowlapps.com.quiz360. 
+Доска с задачами https://trello.com/b/0s0gOI21/simpletriviaclone. 
 
 ## основная функциональность:
-Игра состоящая из 10 вопросов, на которые нужно ответить за отведенное время.
+Игра состоящая из 10 вопросов, на которые нужно ответить за отведенное время. 
 
 ## стек технологий:
-Kotlin, Flow, Firebase services, Glide, ExoPlayer, etc
+Kotlin, Flow, Firebase services, Glide, ExoPlayer, etc 
 
 ## список экранов: 
 * Экран входа
@@ -27,3 +27,14 @@ Kotlin, Flow, Firebase services, Glide, ExoPlayer, etc
 * Экран с рейтингом - подĸлючить гугловый сервис для топа игроĸов
 * реализовать игрофикацию игры + экран с достижениями
 * Экран Privacy Policy
+
+
+## Настройки Firebase:
+https://console.firebase.google.com/project/simpletriviaclone 
+
+command for generating debug signing certificate SHA-1: 
+`keytool -alias androiddebugkey -keystore ~/.android/debug.keystore -list -v -storepass android`
+
+
+## Markdown syntax rules:
+https://www.markdownguide.org/basic-syntax 
