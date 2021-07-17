@@ -18,3 +18,4 @@ local.properties
 /.idea/assetWizardSettings.xml
 google-services.json
 \.idea/
+/screenshots

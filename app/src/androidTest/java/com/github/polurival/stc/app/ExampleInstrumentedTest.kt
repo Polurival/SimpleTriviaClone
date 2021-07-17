@@ -1,4 +1,4 @@
-package com.github.polurival.simpletriviaclone
+package com.github.polurival.stc.app
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.github.polurival.simpletriviaclone", appContext.packageName)
+        assertEquals("com.github.polurival.stc.app", appContext.packageName)
     }
 }

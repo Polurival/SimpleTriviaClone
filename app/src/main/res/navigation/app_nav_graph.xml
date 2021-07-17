@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- https://developer.android.com/guide/navigation/navigation-multi-module -->
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/app_nav_fragment_login">
+
+    <fragment
+        android:id="@+id/app_nav_fragment_login"
+        android:name="com.github.polurival.stc.login.ui.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/login_fragment_login"/>
+
+    <fragment
+        android:id="@+id/app_nav_fragment_main"
+        android:name="com.github.polurival.stc.main.ui.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/main_fragment_main">
+        <deepLink
+            app:uri="android-app://com.github.polurival.stc/app_nav_fragment_main" />
+    </fragment>
+
+</navigation>
