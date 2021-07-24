@@ -1,6 +1,5 @@
 package com.github.polurival.stc.login.ui
 
-import android.app.Activity.MODE_PRIVATE
 import android.app.Activity.RESULT_OK
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -15,6 +14,8 @@ import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract
 import com.firebase.ui.auth.data.model.FirebaseAuthUIAuthenticationResult
 import com.github.polurival.stc.login.databinding.LoginFragmentLoginBinding
+import com.github.polurival.stc.storage.PreferencesManager
+import com.github.polurival.stc.storage.PreferencesManager.Companion.USER_NAME
 import com.google.firebase.auth.FirebaseAuth
 
 /**
@@ -30,12 +31,14 @@ class LoginFragment : Fragment() {
         onSignInResult(result)
     }
     private lateinit var binding: LoginFragmentLoginBinding
+    private lateinit var prefs: PreferencesManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val loggedUserId = requireContext().getSharedPreferences("user", MODE_PRIVATE)
-            .getString(USER_UID, null)
-        if (loggedUserId != null) {
+        prefs = PreferencesManager.create(requireContext())
+
+        val loggedUserName = prefs.getString(USER_NAME)
+        if (loggedUserName != null) {
             locateToMainScreen()
         }
     }
@@ -53,11 +56,7 @@ class LoginFragment : Fragment() {
             val user = FirebaseAuth.getInstance().currentUser
             Toast.makeText(requireContext(), "Hello $user!", Toast.LENGTH_LONG).show()
 
-            // todo move to storage module
-            requireContext().getSharedPreferences("user", MODE_PRIVATE)
-                .edit()
-                .putString(USER_UID, user?.uid)
-                .apply()
+            prefs.putString(USER_NAME, user?.displayName)
 
             locateToMainScreen()
         } else {
@@ -93,9 +92,5 @@ class LoginFragment : Fragment() {
             .setAvailableProviders(providers)
             .build()
         signInLauncher.launch(signInIntent)
-    }
-
-    companion object {
-        private const val USER_UID = "USER_TOKEN"
     }
 }

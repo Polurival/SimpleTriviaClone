@@ -21,4 +21,22 @@
             app:uri="android-app://com.github.polurival.stc/app_nav_fragment_main" />
     </fragment>
 
+    <fragment
+        android:id="@+id/app_nav_fragment_start_game"
+        android:name="com.github.polurival.stc.game.ui.StartGameFragment"
+        android:label="fragment_start_game"
+        tools:layout="@layout/game_fragment_start_game">
+        <deepLink
+            app:uri="android-app://com.github.polurival.stc/app_nav_fragment_start_game" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/app_nav_fragment_game"
+        android:name="com.github.polurival.stc.game.ui.GameFragment"
+        android:label="fragment_game"
+        tools:layout="@layout/game_fragment_game">
+        <deepLink
+            app:uri="android-app://com.github.polurival.stc/app_nav_fragment_game" />
+    </fragment>
+
 </navigation>
