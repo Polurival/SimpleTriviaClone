@@ -2,5 +2,7 @@ rootProject.name = "SimpleTriviaClone"
 include ':app'
 include ':design'
 include ':feature:game'
+include ':feature:home'
 include ':feature:login'
 include ':feature:main'
+include ':storage'
