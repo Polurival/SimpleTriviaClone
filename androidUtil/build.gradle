@@ -5,13 +5,10 @@ plugins {
 
 android {
     compileSdkVersion 30
-    resourcePrefix = "storage"
 
     defaultConfig {
         minSdkVersion 21
         targetSdkVersion 30
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -23,10 +20,7 @@ android {
 }
 
 dependencies {
-
     implementation(libs.appCompat)
-    implementation(libs.material)
     implementation(libs.coreKtx)
-
-    testImplementation(libs.junit)
+    implementation(libs.navigation)
 }

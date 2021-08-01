@@ -1,7 +1,7 @@
 ## тема проекта:
 Приложение виĸторина (тема вопросов общая или будет уточняться). 
 Простой клон https://play.google.com/store/apps/details?id=smartowlapps.com.quiz360. 
-Доска с задачами https://trello.com/b/0s0gOI21/simpletriviaclone. 
+Используемое апи вопросов и ответов: https://opentdb.com/api_config.php. 
 
 ## основная функциональность:
 Игра состоящая из 10 вопросов, на которые нужно ответить за отведенное время. 
@@ -38,3 +38,7 @@ command for generating debug signing certificate SHA-1:
 
 ## Markdown syntax rules:
 https://www.markdownguide.org/basic-syntax 
+
+#### Полезные ссылки:
+http://www.titov.net/2005/09/21/do-not-use-order-by-rand-or-how-to-get-random-rows-from-table/ 
+https://firebase.google.com/codelabs/firestore-android#0 
