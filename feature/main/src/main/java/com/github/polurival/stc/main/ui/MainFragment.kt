@@ -24,6 +24,9 @@ class MainFragment : Fragment() {
         return binding.root
     }
 
+    /**
+     * https://developer.android.com/reference/com/google/android/material/tabs/TabLayout
+     */
     private fun connectViewPagerWithTabs() {
         TabLayoutMediator(binding.tabs, binding.viewPager) { tab, position ->
             tab.text = position.toString() // todo

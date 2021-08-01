@@ -5,7 +5,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.github.polurival.stc.home.ui.HomeFragment
 
 /**
- *
+ * https://developer.android.com/training/animation/screen-slide-2
  *
  * @author Юрий Польщиков on 24.07.2021
  */
