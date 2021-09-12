@@ -1,0 +1,36 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+}
+
+android {
+    compileSdkVersion 30
+    resourcePrefix = "core"
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 30
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+    implementation project(":coreApi")
+
+    implementation(libs.dagger)
+    kapt(libs.daggerCompiler)
+
+    implementation(libs.coroutinesAndroid)
+
+    implementation(libs.ktSerializationLib)
+    implementation(libs.okHttpLog)
+    implementation(libs.retrofit)
+    implementation(libs.retrofitKtSerializationConverter)
+}

@@ -24,8 +24,10 @@ android {
 }
 
 dependencies {
+    implementation project(":coreApi")
+    implementation project(":coreUi")
     implementation project(":design")
-    implementation project(":storage")
+    implementation project(":storageApi")
 
     implementation(libs.appCompat)
     implementation(libs.coreKtx)

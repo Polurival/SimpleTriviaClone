@@ -2,20 +2,20 @@ package com.github.polurival.stc.login.ui
 
 import android.app.Activity.RESULT_OK
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.net.toUri
-import androidx.fragment.app.Fragment
 import androidx.navigation.NavDeepLinkRequest
 import androidx.navigation.fragment.findNavController
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract
 import com.firebase.ui.auth.data.model.FirebaseAuthUIAuthenticationResult
+import com.github.polurival.stc.coreui.BaseFragment
+import com.github.polurival.stc.login.R
 import com.github.polurival.stc.login.databinding.LoginFragmentLoginBinding
-import com.github.polurival.stc.storage.PreferencesManager
-import com.github.polurival.stc.storage.PreferencesManager.Companion.USER_NAME
+import com.github.polurival.stc.storageapi.PreferencesManager
+import com.github.polurival.stc.storageapi.StorageCoreLibApi
+import com.github.polurival.stc.storageapi.USER_NAME
 import com.google.firebase.auth.FirebaseAuth
 
 /**
@@ -23,30 +23,41 @@ import com.google.firebase.auth.FirebaseAuth
  *
  * @author Юрий Польщиков on 11.07.2021
  */
-class LoginFragment : Fragment() {
+class LoginFragment : BaseFragment(R.layout.login_fragment_login) {
 
     private val signInLauncher = registerForActivityResult(
         FirebaseAuthUIActivityResultContract()
     ) { result ->
         onSignInResult(result)
     }
-    private lateinit var binding: LoginFragmentLoginBinding
-    private lateinit var prefs: PreferencesManager
+    private var binding: LoginFragmentLoginBinding? = null
+    private var prefs: PreferencesManager? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        prefs = PreferencesManager.create(requireContext())
+        prefs = api.getCore(StorageCoreLibApi::class.java).preferencesManager
 
-        val loggedUserName = prefs.getString(USER_NAME)
+        val loggedUserName = prefs?.getString(USER_NAME)
         if (loggedUserName != null) {
             locateToMainScreen()
         }
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        binding = LoginFragmentLoginBinding.inflate(layoutInflater)
-        binding.loginButton.setOnClickListener { createSignInIntent() }
-        return binding.root
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding = LoginFragmentLoginBinding.bind(view).apply {
+            loginButton.setOnClickListener { createSignInIntent() }
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        binding = null
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        prefs = null
     }
 
     private fun onSignInResult(result: FirebaseAuthUIAuthenticationResult) {
@@ -56,7 +67,7 @@ class LoginFragment : Fragment() {
             val user = FirebaseAuth.getInstance().currentUser
             Toast.makeText(requireContext(), "Hello $user!", Toast.LENGTH_LONG).show()
 
-            prefs.putString(USER_NAME, user?.displayName)
+            prefs?.putString(USER_NAME, user?.displayName)
 
             locateToMainScreen()
         } else {

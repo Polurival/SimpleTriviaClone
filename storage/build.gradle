@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.library'
     id 'kotlin-android'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -10,8 +11,6 @@ android {
     defaultConfig {
         minSdkVersion 21
         targetSdkVersion 30
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -23,6 +22,12 @@ android {
 }
 
 dependencies {
+    api project(":storageApi")
+
+    implementation project (":coreApi")
+
+    implementation(libs.dagger)
+    kapt(libs.daggerCompiler)
 
     implementation(libs.appCompat)
     implementation(libs.material)
