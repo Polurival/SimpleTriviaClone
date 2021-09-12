@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
     id 'com.google.gms.google-services'
 }
 
@@ -33,15 +34,29 @@ android {
 }
 
 dependencies {
+    implementation project(":core")
+    implementation project(":coreApi")
+    implementation project(":coreUi")
     implementation project(":feature:game")
+    implementation project(":feature:gameApi")
     implementation project(":feature:login")
     implementation project(":feature:main")
+    implementation project(":storage")
+    implementation project(":storageApi")
+
+    implementation(libs.dagger)
+    kapt(libs.daggerCompiler)
 
     implementation(libs.appCompat)
     implementation(libs.material)
     implementation(libs.coreKtx)
     implementation(libs.navigation)
     implementation(libs.navigationUi)
+
+    implementation(libs.ktSerializationLib)
+    implementation(libs.okHttpLog)
+    implementation(libs.retrofit)
+    implementation(libs.retrofitKtSerializationConverter)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.junitAndroidExt)

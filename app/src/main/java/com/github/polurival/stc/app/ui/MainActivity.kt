@@ -1,6 +1,6 @@
 package com.github.polurival.stc.app.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import com.github.polurival.stc.app.R
+import com.github.polurival.stc.coreui.BaseActivity
 
-class MainActivity : AppCompatActivity(R.layout.app_activity_main)
+class MainActivity : BaseActivity(R.layout.app_activity_main)

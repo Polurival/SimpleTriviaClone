@@ -23,7 +23,7 @@
 
     <fragment
         android:id="@+id/app_nav_fragment_start_game"
-        android:name="com.github.polurival.stc.game.ui.StartGameFragment"
+        android:name="com.github.polurival.stc.game.ui.fragment.StartGameFragment"
         android:label="fragment_start_game"
         tools:layout="@layout/game_fragment_start_game">
         <deepLink
@@ -32,7 +32,7 @@
 
     <fragment
         android:id="@+id/app_nav_fragment_game"
-        android:name="com.github.polurival.stc.game.ui.GameFragment"
+        android:name="com.github.polurival.stc.game.ui.fragment.GameFragment"
         android:label="fragment_game"
         tools:layout="@layout/game_fragment_game">
         <deepLink
