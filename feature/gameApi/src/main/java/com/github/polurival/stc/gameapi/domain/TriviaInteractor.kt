@@ -10,5 +10,7 @@ import kotlinx.coroutines.flow.Flow
  */
 interface TriviaInteractor {
 
-    fun getQuestions(): Flow<TriviaResponseModel>
+    fun requestQuestions(): Flow<TriviaResponseModel>
+
+    fun getQuestions(): Flow<TriviaModel>
 }

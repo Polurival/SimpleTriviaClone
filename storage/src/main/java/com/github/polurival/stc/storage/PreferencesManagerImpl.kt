@@ -15,7 +15,7 @@ class PreferencesManagerImpl(
         preferences.edit().putString(key, value).apply()
     }
 
-    override fun getString(key: String): String? {
-        return preferences.getString(key, null)
+    override fun getString(key: String, default: String): String {
+        return preferences.getString(key, null) ?: default
     }
 }
