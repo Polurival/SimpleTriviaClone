@@ -9,7 +9,7 @@ interface PreferencesManager {
 
     fun putString(key: String, value: String?)
 
-    fun getString(key: String): String?
+    fun getString(key: String, default: String = ""): String
 }
 
 const val USER_NAME = "userName"

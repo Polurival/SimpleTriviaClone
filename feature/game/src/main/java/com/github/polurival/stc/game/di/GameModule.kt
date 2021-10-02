@@ -2,6 +2,8 @@ package com.github.polurival.stc.game.di
 
 import com.github.polurival.stc.game.data.TriviaRepository
 import com.github.polurival.stc.game.data.TriviaRepositoryImpl
+import com.github.polurival.stc.game.data.TriviaResponseConverter
+import com.github.polurival.stc.game.data.TriviaResponseConverterImpl
 import com.github.polurival.stc.game.domain.TriviaInteractorImpl
 import com.github.polurival.stc.gameapi.domain.TriviaInteractor
 import dagger.Binds
@@ -19,6 +21,10 @@ interface GameModule {
     @Binds
     @Reusable
     fun bindsTriviaRepository(impl: TriviaRepositoryImpl): TriviaRepository
+
+    @Binds
+    @Reusable
+    fun bindsTriviaResponseConverter(impl: TriviaResponseConverterImpl): TriviaResponseConverter
 
     @Binds
     @Reusable

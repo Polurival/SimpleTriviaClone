@@ -28,12 +28,15 @@ class StartGameFragment : BaseFragment(R.layout.game_fragment_start_game) {
     lateinit var factory: StartGameViewModelFactory
     private val startGameViewModel by viewModels<StartGameViewModel> { factory }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         DaggerGameFragmentComponent.factory()
             .create(gameFeatureApi = api.getFeature())
             .inject(this)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         // todo рассмотреть самое трушное апи для запуска корутин в связке с lifecycle
         startGameViewModel.triviaGameData
