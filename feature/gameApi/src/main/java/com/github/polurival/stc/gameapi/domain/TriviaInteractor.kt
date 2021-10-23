@@ -1,6 +1,5 @@
 package com.github.polurival.stc.gameapi.domain
 
-import com.github.polurival.stc.gameapi.data.TriviaResponseModel
 import kotlinx.coroutines.flow.Flow
 
 /**
@@ -10,7 +9,7 @@ import kotlinx.coroutines.flow.Flow
  */
 interface TriviaInteractor {
 
-    fun requestQuestions(): Flow<TriviaResponseModel>
+    fun requestQuestions(): Flow<Unit>
 
     fun getQuestions(): Flow<TriviaModel>
 }

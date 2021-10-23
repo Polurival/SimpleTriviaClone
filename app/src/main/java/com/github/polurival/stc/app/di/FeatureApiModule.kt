@@ -26,6 +26,7 @@ object FeatureApiModule {
     ): Api =
         DaggerGameComponent.factory()
             .create(
+                contextCoreLibApi = coreApis.get(),
                 dispatchersCoreLibApi = coreApis.get(),
                 networkCoreLibApi = coreApis.get(),
                 storageCoreLibApi = coreApis.get(),

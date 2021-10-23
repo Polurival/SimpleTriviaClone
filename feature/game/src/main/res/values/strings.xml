@@ -1,3 +1,9 @@
 <resources>
+    <plurals name="game_correct_answers_count">
+        <item quantity="zero">You answered correctly on %d questions</item>
+        <item quantity="one">You answered correctly on %d question</item>
+        <item quantity="few">You answered correctly on %d questions</item>
+        <item quantity="other">You answered correctly on %d questions</item>
+    </plurals>
     <string name="game_launch">LAUNCH…</string>
 </resources>

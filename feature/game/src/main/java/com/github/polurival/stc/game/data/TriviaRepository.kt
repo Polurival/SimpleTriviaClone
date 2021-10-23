@@ -1,6 +1,5 @@
 package com.github.polurival.stc.game.data
 
-import com.github.polurival.stc.gameapi.data.TriviaResponseModel
 import com.github.polurival.stc.gameapi.domain.TriviaModel
 import kotlinx.coroutines.flow.Flow
 
@@ -11,7 +10,9 @@ import kotlinx.coroutines.flow.Flow
  */
 interface TriviaRepository {
 
-    fun requestQuestions(amount: Int): Flow<TriviaResponseModel>
+    fun requestQuestions(amount: Int): Flow<Unit>
 
-    fun getAllQuestions() : Flow<TriviaModel>
+    fun getAllQuestions(): Flow<TriviaModel>
 }
+
+const val QUIZ_QUESTION_COUNT = 5

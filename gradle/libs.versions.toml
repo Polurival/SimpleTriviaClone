@@ -31,7 +31,7 @@ navigation = "2.3.5"
 okHttp = "4.8.1"
 recyclerView = "1.2.0"
 retrofit = "2.9.0"
-room = "2.2.6"
+room = "2.3.0"
 shimmer = "0.5.0"
 spotless = "5.12.2"
 stetho = "1.6.0"
@@ -54,6 +54,7 @@ navigationSafeArgs = { module = "androidx.navigation:navigation-safe-args-gradle
 navigationUi = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigation" }
 room = { module = "androidx.room:room-runtime", version.ref = "room" }
 roomCompiler = { module = "androidx.room:room-compiler", version.ref = "room" }
+roomKtx = { module = "androidx.room:room-ktx", version.ref = "room" }
 
 coroutinesAndroid = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutinesAndroid" }
 
