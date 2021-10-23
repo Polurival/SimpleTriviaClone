@@ -11,6 +11,15 @@ android {
     defaultConfig {
         minSdkVersion 21
         targetSdkVersion 30
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments += [
+                        "room.schemaLocation"  : "$projectDir/schemas".toString(),
+                        "room.incremental"     : "true",
+                        "room.expandProjection": "true"]
+            }
+        }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -24,10 +33,14 @@ android {
 dependencies {
     api project(":storageApi")
 
-    implementation project (":coreApi")
+    implementation project(":coreApi")
 
     implementation(libs.dagger)
     kapt(libs.daggerCompiler)
+
+    implementation(libs.room)
+    implementation(libs.roomKtx)
+    kapt(libs.roomCompiler)
 
     implementation(libs.appCompat)
     implementation(libs.material)

@@ -4,6 +4,7 @@ import android.util.Log
 import com.github.polurival.stc.gameapi.data.TriviaResponseModel
 import com.github.polurival.stc.gameapi.domain.Quiz
 import com.github.polurival.stc.gameapi.domain.TriviaModel
+import com.github.polurival.stc.storageapi.data.TriviaModelEntity
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
@@ -72,5 +73,47 @@ class TriviaResponseConverterImpl @Inject constructor() : TriviaResponseConverte
             Log.e("TriviaResponseConverter", e.toString())
             return TriviaModel(emptyList())
         }
+    }
+
+    override fun convertTriviaModelToEntity(model: TriviaResponseModel): Array<TriviaModelEntity> {
+        val result = mutableListOf<TriviaModelEntity>()
+
+        model.results.forEach {
+            result.add(TriviaModelEntity(
+                question = it.question,
+                category = it.category,
+                type = it.type,
+                difficulty = it.difficulty,
+                correctAnswer = it.correctAnswer,
+                incorrectAnswers = it.incorrectAnswers
+            ))
+        }
+
+        return result.toTypedArray()
+    }
+
+    override fun convertEntitiesToJson(models: List<TriviaModelEntity>): String {
+        val all = JSONObject()
+
+        val results = JSONArray()
+        for (model in models) {
+            val question = JSONObject()
+            question.put("category", model.category)
+            question.put("type", model.type)
+            question.put("difficulty", model.difficulty)
+            question.put("question", model.question)
+            question.put("correct_answer", model.correctAnswer)
+
+            val incorrectAnswers = JSONArray()
+            model.incorrectAnswers.forEach { incorrectAnswer ->
+                incorrectAnswers.put(incorrectAnswer)
+            }
+            question.put("incorrect_answers", incorrectAnswers)
+
+            results.put(question)
+        }
+        all.put("results", results)
+
+        return all.toString()
     }
 }

@@ -11,7 +11,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.github.polurival.stc.coreapi.di.getFeature
 import com.github.polurival.stc.coreui.BaseFragment
-import com.github.polurival.stc.game.R
 import com.github.polurival.stc.game.databinding.GameFragmentGameBinding
 import com.github.polurival.stc.game.di.DaggerGameFragmentComponent
 import com.github.polurival.stc.game.ui.viewmodel.GameViewModel
@@ -20,13 +19,15 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
+import com.github.polurival.stc.design.R as designR
+import com.github.polurival.stc.game.R as gameR
 
 /**
  *
  *
  * @author Юрий Польщиков on 24.07.2021
  */
-class GameFragment : BaseFragment(R.layout.game_fragment_game) {
+class GameFragment : BaseFragment(gameR.layout.game_fragment_game) {
 
     @Inject
     lateinit var factory: GameViewModelFactory
@@ -61,12 +62,13 @@ class GameFragment : BaseFragment(R.layout.game_fragment_game) {
     private fun bindGame(state: GameViewModel.State) {
         when (state) {
             is GameViewModel.State.StartGame -> {
-                binding?.questionView?.text = Html.fromHtml(state.quiz?.question)
+                binding?.questionView?.text = state.quiz?.let { Html.fromHtml(it.question) }
+                    ?: getString(designR.string.design_something_happened)
 
                 binding?.questionsContainer?.removeAllViews()
                 for (answer in state.quiz?.allAnswers.orEmpty()) {
                     val questionView = LayoutInflater.from(requireContext())
-                        .inflate(R.layout.game_item_answer, binding?.questionsContainer, false) as TextView
+                        .inflate(gameR.layout.game_item_answer, binding?.questionsContainer, false) as TextView
                     questionView.text = answer
                     questionView.setOnClickListener {
                         binding?.questionsContainer?.children?.forEach {
@@ -79,20 +81,22 @@ class GameFragment : BaseFragment(R.layout.game_fragment_game) {
                 }
             }
             is GameViewModel.State.CorrectChoose -> {
-                changeAnswerViewColor(state.correctIndex, R.color.correct)
+                changeAnswerViewColor(state.correctIndex, gameR.color.correct)
             }
             is GameViewModel.State.IncorrectChoose -> {
-                changeAnswerViewColor(state.correctIndex, R.color.correct)
-                changeAnswerViewColor(state.incorrectIndex, R.color.incorrect)
+                changeAnswerViewColor(state.correctIndex, gameR.color.correct)
+                changeAnswerViewColor(state.incorrectIndex, gameR.color.incorrect)
             }
             is GameViewModel.State.GameOver -> {
                 // todo start EndGameFragment
                 parentFragmentManager.popBackStack()
-                Toast.makeText(
-                    requireContext(),
-                    "Вы ответили правильно на ${state.correctAnswersCount} вопросов",
-                    Toast.LENGTH_SHORT
-                ).show()
+                val toastText = resources.getQuantityString(
+                    gameR.plurals.game_correct_answers_count,
+                    state.correctAnswersCount,
+                    state.correctAnswersCount
+                )
+                Toast.makeText(requireContext(), toastText, Toast.LENGTH_SHORT)
+                    .show()
             }
             else -> {
             }

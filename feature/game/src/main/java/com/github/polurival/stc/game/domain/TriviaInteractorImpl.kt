@@ -1,7 +1,7 @@
 package com.github.polurival.stc.game.domain
 
+import com.github.polurival.stc.game.data.QUIZ_QUESTION_COUNT
 import com.github.polurival.stc.game.data.TriviaRepository
-import com.github.polurival.stc.gameapi.data.TriviaResponseModel
 import com.github.polurival.stc.gameapi.domain.TriviaInteractor
 import com.github.polurival.stc.gameapi.domain.TriviaModel
 import kotlinx.coroutines.flow.Flow
@@ -22,9 +22,9 @@ class TriviaInteractorImpl @Inject constructor(
      * Если не успех, то попытаться загрузить игру из локального хранилища (сохранять туда загруженные игры)
      * если в локальном хранилище ничего нет, то показать ошибку и вернуться на главный экран
      */
-    override fun requestQuestions(): Flow<TriviaResponseModel> {
+    override fun requestQuestions(): Flow<Unit> {
         // todo request logic here
-        return triviaRepository.requestQuestions(5)
+        return triviaRepository.requestQuestions(QUIZ_QUESTION_COUNT)
     }
 
     /**
