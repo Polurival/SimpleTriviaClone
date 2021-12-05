@@ -8,8 +8,8 @@ import com.github.polurival.stc.coreapi.context.ContextCoreLibApi
 import com.github.polurival.stc.coreapi.coroutines.DispatchersCoreLibApi
 import com.github.polurival.stc.coreapi.di.Api
 import com.github.polurival.stc.coreapi.network.NetworkCoreLibApi
-import com.github.polurival.stc.storageapi.StorageCoreLibApi
 import com.github.polurival.stc.storage.di.DaggerStorageCoreLibComponent
+import com.github.polurival.stc.storageapi.StorageCoreLibApi
 import dagger.Module
 import dagger.Provides
 import dagger.multibindings.ClassKey

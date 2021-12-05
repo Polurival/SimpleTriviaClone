@@ -1,0 +1,23 @@
+plugins {
+    id 'java-library'
+    id 'kotlin'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+dependencies {
+    compileOnly(libs.lintApi)
+
+    testImplementation(libs.junit)
+    testImplementation(libs.lintCore)
+    testImplementation(libs.lintTests)
+}
+
+jar {
+    manifest {
+        attributes 'Lint-Registry-v2': 'com.github.polurival.stc.lint.LintChecksRegistry'
+    }
+}
