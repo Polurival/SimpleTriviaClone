@@ -28,6 +28,7 @@ android {
 }
 
 dependencies {
+    lintChecks project(":lint")
     api project(":feature:gameApi")
 
     implementation project(":androidUtil")

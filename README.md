@@ -4,10 +4,11 @@
 Используемое апи вопросов и ответов: https://opentdb.com/api_config.php. 
 
 ## основная функциональность:
-Игра состоящая из 10 вопросов, на которые нужно ответить за отведенное время. 
+Игра состоящая из N вопросов, на которые нужно ответить за отведенное время. 
 
 ## стек технологий:
-Kotlin, Flow, Firebase services, Glide, ExoPlayer, etc 
+Kotlin, Dagger2, Coroutines Flow, Room, Navigation, Lint, Detekt
+TBD: Firebase services, etc
 
 ## список экранов: 
 * Экран входа

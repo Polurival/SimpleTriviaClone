@@ -6,7 +6,7 @@ constraintLayout = "2.0.0-rc1"
 coreKtx = "1.6.0"
 coroutinesAndroid = "1.5.1"
 dagger = "2.38.1"
-detekt = "1.16.0"
+detekt = "1.19.0"
 espresso = "3.4.0"
 firebaseBom = "28.2.0"
 firebaseUiAuth = "7.2.0"
@@ -21,10 +21,10 @@ ktlint = "0.41.0"
 ktlintGradle = "10.0.0"
 ktSerializationJson = "1.2.2"
 retrofitKtSerializationConverter = "0.8.0"
-ktStdLib = "1.4.32"
+ktStdLib = "1.5.21"
 leakCanary = "2.7"
 lifecycle = "2.3.1"
-lint = "27.2.0-rc01"
+lint = "30.0.2"
 material = "1.4.0"
 mockk = "1.10.6"
 navigation = "2.3.5"
@@ -71,7 +71,6 @@ spotlessPlugin = { module = "com.diffplug.spotless:spotless-plugin-gradle", vers
 versionsPlugin = { module = "com.github.ben-manes:gradle-versions-plugin", version.ref = "versionsPlugin" }
 
 glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
-kotlinReflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "ktStdLib" }
 kotlinStdLib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "ktStdLib" }
 leakCanary = { module = "com.squareup.leakcanary:leakcanary-android", version.ref = "leakCanary" }
 timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
@@ -96,6 +95,7 @@ detektFormatting = { module = "io.gitlab.arturbosch.detekt:detekt-formatting", v
 lintApi = { module = "com.android.tools.lint:lint-api", version.ref = "lint" }
 lintChecks = { module = "com.android.tools.lint:lint-checks", version.ref = "lint" }
 lintCore = { module = "com.android.tools.lint:lint", version.ref = "lint" }
+lintTests = { module = "com.android.tools.lint:lint-tests", version.ref = "lint" }
 
 firebaseBom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
 firebaseUiAuth = { module = "com.firebaseui:firebase-ui-auth", version.ref = "firebaseUiAuth" }

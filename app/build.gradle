@@ -3,6 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'com.google.gms.google-services'
+    id "io.gitlab.arturbosch.detekt"
 }
 
 android {
@@ -31,9 +32,13 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    lintOptions {
+        abortOnError false
+    }
 }
 
 dependencies {
+    detektPlugins(libs.detektFormatting)
     implementation project(":core")
     implementation project(":coreApi")
     implementation project(":coreUi")
@@ -61,4 +66,14 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.junitAndroidExt)
     androidTestImplementation(libs.espresso)
+}
+
+detekt {
+    toolVersion = "1.19.0"
+    basePath = projectDir
+    reports {
+        html { enabled = true }
+        txt { enabled = false }
+        xml { enabled = false }
+    }
 }
