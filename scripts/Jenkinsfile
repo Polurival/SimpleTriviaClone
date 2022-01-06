@@ -1,0 +1,25 @@
+pipeline {
+    agent {
+        docker {
+            image 'androidsdk/android-30'
+            args '-it --memory=12g --cpus="6"'
+        }
+    }
+    stages {
+        stage('Pull') {
+            steps {
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Polurival/SimpleTriviaClone.git']]])
+            }
+        }
+        stage('Prepare') {
+            steps {
+                sh 'chmod +x gradlew'
+            }
+        }
+        stage('Build') {
+            steps {
+                sh './gradlew build'
+            }
+        }
+    }
+}
