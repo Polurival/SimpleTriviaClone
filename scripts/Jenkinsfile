@@ -1,7 +1,7 @@
 pipeline {
     agent {
-        dockerfile {
-            dir 'scripts'
+        docker {
+            image 'androidsdk/android-30'
             args '-it --memory=12g --cpus="6"'
         }
     }
